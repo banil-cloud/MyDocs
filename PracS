@@ -1,0 +1,871 @@
+1. pwd (Print Working Directory)
+
+    Example 1: Check your current directory before running a script.
+
+    bash
+
+pwd
+
+Example 2: Use in a script to output the current working directory during execution.
+
+bash
+
+echo "Running from: $(pwd)"
+
+Example 3: Verify you are in the correct directory before copying files.
+
+bash
+
+pwd
+
+Example 4: Output the working directory to a log file during a backup operation.
+
+bash
+
+pwd >> backup_log.txt
+
+Example 5: Use in a CI/CD pipeline script to log the build directory.
+
+bash
+
+    pwd > build_directory.log
+
+2. ls (List Directory Contents)
+
+    Example 1: List all files in a directory with detailed information (including hidden files).
+
+    bash
+
+ls -la
+
+Example 2: List files sorted by modification time (newest first).
+
+bash
+
+ls -lt
+
+Example 3: List only directories in the current path.
+
+bash
+
+ls -d */
+
+Example 4: Check the size of files in human-readable format.
+
+bash
+
+ls -lh
+
+Example 5: Recursively list all files and directories from the current directory.
+
+bash
+
+    ls -R
+
+3. cd (Change Directory)
+
+    Example 1: Navigate to the root directory.
+
+    bash
+
+cd /
+
+Example 2: Navigate to a home directory.
+
+bash
+
+cd ~
+
+Example 3: Move up one directory level.
+
+bash
+
+cd ..
+
+Example 4: Go to the /var/log directory to inspect logs.
+
+bash
+
+cd /var/log
+
+Example 5: Navigate back to the last directory you were in.
+
+bash
+
+    cd -
+
+4. cp (Copy Files and Directories)
+
+    Example 1: Copy a file to another directory.
+
+    bash
+
+cp file.txt /home/user/backup/
+
+Example 2: Copy a directory and its contents.
+
+bash
+
+cp -r /var/log /backup/
+
+Example 3: Copy a file, keeping its original permissions and attributes.
+
+bash
+
+cp -p file.txt /backup/
+
+Example 4: Copy multiple files to a directory.
+
+bash
+
+cp file1.txt file2.txt /destination/
+
+Example 5: Copy a file and rename it in the destination.
+
+bash
+
+    cp oldname.txt newname.txt
+
+5. mv (Move or Rename Files and Directories)
+
+    Example 1: Rename a file.
+
+    bash
+
+mv oldname.txt newname.txt
+
+Example 2: Move a file to another directory.
+
+bash
+
+mv file.txt /home/user/documents/
+
+Example 3: Move and rename a file simultaneously.
+
+bash
+
+mv oldfile.txt /home/user/documents/newfile.txt
+
+Example 4: Move a directory and its contents.
+
+bash
+
+mv /var/www/html /backup/
+
+Example 5: Move all .log files to a backup folder.
+
+bash
+
+    mv *.log /backup/logs/
+
+6. rm (Remove Files or Directories)
+
+    Example 1: Delete a single file.
+
+    bash
+
+rm file.txt
+
+Example 2: Remove multiple files at once.
+
+bash
+
+rm file1.txt file2.txt file3.txt
+
+Example 3: Remove a directory and its contents.
+
+bash
+
+rm -rf /backup/old/
+
+Example 4: Remove all files with a .log extension.
+
+bash
+
+rm *.log
+
+Example 5: Interactively delete files (ask for confirmation).
+
+bash
+
+    rm -i file.txt
+
+7. cat (Concatenate and Display File Content)
+
+    Example 1: Display the contents of a configuration file.
+
+    bash
+
+cat /etc/nginx/nginx.conf
+
+Example 2: Combine the contents of two files and output to a new file.
+
+bash
+
+cat file1.txt file2.txt > combined.txt
+
+Example 3: Append the contents of one file to another.
+
+bash
+
+cat new_logs.txt >> all_logs.txt
+
+Example 4: Display the contents of a file with line numbers.
+
+bash
+
+cat -n file.txt
+
+Example 5: Use cat to create a new file by redirecting input.
+
+bash
+
+    cat > newfile.txt
+
+8. more / less (Paginate Through Files)
+
+    Example 1: View a large log file page by page using less.
+
+    bash
+
+less /var/log/syslog
+
+Example 2: Use more to view the content of a text file with pagination.
+
+bash
+
+more file.txt
+
+Example 3: Use less to search for a keyword inside a file.
+
+bash
+
+less /var/log/syslog
+/ERROR
+
+Example 4: Scroll forward and backward through a file using less.
+
+bash
+
+less /var/log/nginx/access.log
+
+Example 5: Exit less by pressing q when done.
+
+bash
+
+    less README.md
+
+9. touch (Create Empty Files or Update Timestamp)
+
+    Example 1: Create a new empty file.
+
+    bash
+
+touch newfile.txt
+
+Example 2: Update the modification time of a file.
+
+bash
+
+touch existingfile.txt
+
+Example 3: Create multiple empty files at once.
+
+bash
+
+touch file1.txt file2.txt file3.txt
+
+Example 4: Use touch to create placeholder files for logs.
+
+bash
+
+touch /var/log/app.log
+
+Example 5: Change the access and modification times of a file to a specific time.
+
+bash
+
+    touch -t 202308080800 file.txt
+
+10. mkdir (Create Directories)
+
+    Example 1: Create a new directory.
+
+    bash
+
+mkdir /home/user/documents
+
+Example 2: Create a directory and subdirectories in one command.
+
+bash
+
+mkdir -p /backup/2023/august
+
+Example 3: Create a directory with specific permissions.
+
+bash
+
+mkdir -m 700 secure_dir
+
+Example 4: Create multiple directories at once.
+
+bash
+
+mkdir dir1 dir2 dir3
+
+Example 5: Create directories based on date, useful for backups.
+
+bash
+
+    mkdir $(date +%Y-%m-%d)_backup
+
+11. rmdir (Remove Empty Directories)
+
+    Example 1: Remove an empty directory.
+
+    bash
+
+rmdir /backup/old_logs
+
+Example 2: Attempt to remove a directory, but receive an error if not empty.
+
+bash
+
+rmdir /home/user/test
+
+Example 3: Use rmdir with --ignore-fail-on-non-empty to avoid errors.
+
+bash
+
+rmdir --ignore-fail-on-non-empty /emptydir
+
+Example 4: Use rmdir recursively with empty nested directories.
+
+bash
+
+rmdir -p /parent/child/grandchild
+
+Example 5: Verify if the directory is empty before using rmdir.
+
+bash
+
+    rmdir /emptydir
+
+12. echo (Display a Line of Text or Variables)
+
+    Example 1: Display a simple message.
+
+    bash
+
+echo "Hello, World!"
+
+Example 2: Display the value of a variable.
+
+bash
+
+echo $HOME
+
+Example 3: Append text to a file.
+
+bash
+
+echo "New entry" >> log.txt
+
+Example 4: Use echo to create a configuration file from a script.
+
+bash
+
+echo "server_name mysite.com;" > /etc/nginx/conf.d/mysite.conf
+
+Example 5: Use echo to pass environment variables to a process.
+
+bash
+
+    export VAR1=value1
+    echo $VAR1
+
+13. find (Search for Files and Directories)
+
+    Example 1: Find a file in the current directory.
+
+    bash
+
+find . -name "file.txt"
+
+Example 2: Search for files modified in the last 7 days.
+
+bash
+
+find /var/log -type f -mtime -7
+
+Example 3: Search for files larger than 100MB.
+
+bash
+
+find /home -type f -size +100M
+
+Example 4: Find all .log files and delete them.
+
+bash
+
+find /var/log -name "*.log" -exec rm {} \;
+
+Example 5: Find and list all empty directories.
+
+bash
+
+    find /home -type d -empty
+
+14. grep (Search Text Using Patterns)
+
+    Example 1: Search for a keyword in a file.
+
+    bash
+
+grep "ERROR" /var/log/syslog
+
+Example 2: Search for a keyword recursively in multiple files.
+
+bash
+
+grep -r "TODO" /home/project
+
+Example 3: Display line numbers of matching lines.
+
+bash
+
+grep -n "ERROR" /var/log/syslog
+
+Example 4: Ignore case while searching for a keyword.
+
+bash
+
+grep -i "error" /var/log/syslog
+
+Example 5: Search for a keyword and output lines that do not match.
+
+bash
+
+    grep -v "INFO" /var/log/syslog
+
+15. tar (Archive Files)
+
+    Example 1: Create a compressed archive.
+
+    bash
+
+tar -czvf archive.tar.gz /home/user/docs
+
+Example 2: Extract a .tar.gz file.
+
+bash
+
+tar -xzvf archive.tar.gz
+
+Example 3: View the contents of an archive without extracting.
+
+bash
+
+tar -tvf archive.tar.gz
+
+Example 4: Add files to an existing archive.
+
+bash
+
+tar -rvf archive.tar /home/user/newfile.txt
+
+Example 5: Extract files to a specific directory.
+
+bash
+
+tar -xzvf archive.tar.gz -C /destination
+
+16. chmod (Change File Permissions)
+
+    Example 1: Grant full access (read, write, and execute) to the owner, and read and execute permissions to others.
+
+    bash
+
+chmod 755 script.sh
+
+Example 2: Remove write permissions for the group and others from a file.
+
+bash
+
+chmod go-w file.txt
+
+Example 3: Make a shell script executable by the user.
+
+bash
+
+chmod u+x backup.sh
+
+Example 4: Recursively change permissions for a directory and all its files.
+
+bash
+
+chmod -R 644 /var/www/html
+
+Example 5: Add execute permissions for all users on a file.
+
+bash
+
+    chmod a+x install.sh
+
+17. chown (Change File Owner and Group)
+
+    Example 1: Change the owner of a file to admin.
+
+    bash
+
+chown admin file.txt
+
+Example 2: Change the owner and group of a directory.
+
+bash
+
+chown user:group /home/user/documents
+
+Example 3: Recursively change the owner of a directory and its contents.
+
+bash
+
+chown -R user:group /var/www
+
+Example 4: Transfer ownership of a file to a different user.
+
+bash
+
+chown john /var/log/syslog
+
+Example 5: Use chown to change ownership for multiple files at once.
+
+bash
+
+    chown user:group file1.txt file2.txt file3.txt
+
+18. df (Disk Free Space)
+
+    Example 1: Display available disk space on all mounted filesystems.
+
+    bash
+
+df -h
+
+Example 2: Check disk usage for a specific mount point.
+
+bash
+
+df -h /home
+
+Example 3: Display filesystem types along with disk usage.
+
+bash
+
+df -Th
+
+Example 4: Monitor disk usage in real-time for a partition.
+
+bash
+
+watch df -h /dev/sda1
+
+Example 5: Use df to ensure a partition has enough space before creating a new file.
+
+bash
+
+    df -h /var
+
+19. du (Disk Usage)
+
+    Example 1: Display disk usage of files and directories in human-readable format.
+
+    bash
+
+du -h /home/user/
+
+Example 2: Summarize the disk usage of a directory.
+
+bash
+
+du -sh /var/log
+
+Example 3: Display the disk usage of each subdirectory in /var/www.
+
+bash
+
+du -h --max-depth=1 /var/www
+
+Example 4: Find large files and directories consuming disk space.
+
+bash
+
+du -ah / | sort -rh | head -n 10
+
+Example 5: Check the disk usage of a directory excluding specific files.
+
+bash
+
+    du -h --exclude='*.log' /var/log
+
+20. ps (Process Status)
+
+    Example 1: List all running processes for the current user.
+
+    bash
+
+ps
+
+Example 2: Display all processes currently running on the system.
+
+bash
+
+ps aux
+
+Example 3: View processes by their hierarchy (process tree).
+
+bash
+
+ps -ejH
+
+Example 4: Filter running processes by a specific user.
+
+bash
+
+ps -u username
+
+Example 5: Check processes that are using a large amount of CPU.
+
+bash
+
+    ps aux --sort=-%cpu | head -n 10
+
+21. top (Task Manager)
+
+    Example 1: Display a real-time view of system processes and resource usage.
+
+    bash
+
+top
+
+Example 2: Sort processes by memory usage.
+
+bash
+
+top -o %MEM
+
+Example 3: Show only processes of a specific user.
+
+bash
+
+top -u username
+
+Example 4: Refresh top output more frequently for a more real-time view.
+
+bash
+
+top -d 1
+
+Example 5: Highlight running tasks in top for quick identification.
+
+bash
+
+    top -H
+
+22. kill (Terminate Processes)
+
+    Example 1: Kill a process by its PID.
+
+    bash
+
+kill 1234
+
+Example 2: Use kill -9 to forcefully terminate a stuck process.
+
+bash
+
+kill -9 5678
+
+Example 3: Terminate all processes by a specific user.
+
+bash
+
+pkill -u username
+
+Example 4: Send a specific signal (e.g., SIGHUP) to restart a process.
+
+bash
+
+kill -SIGHUP 3456
+
+Example 5: Kill multiple processes at once using pkill with a pattern.
+
+bash
+
+    pkill -f java
+
+23. service / systemctl (Manage Services)
+
+    Example 1: Start a service.
+
+    bash
+
+systemctl start nginx
+
+Example 2: Restart a service.
+
+bash
+
+systemctl restart nginx
+
+Example 3: Stop a running service.
+
+bash
+
+systemctl stop nginx
+
+Example 4: Enable a service to start on boot.
+
+bash
+
+systemctl enable nginx
+
+Example 5: Check the status of a service.
+
+bash
+
+    systemctl status nginx
+
+24. netstat (Network Statistics)
+
+    Example 1: Display all active network connections.
+
+    bash
+
+netstat -a
+
+Example 2: Show the listening ports and associated services.
+
+bash
+
+netstat -l
+
+Example 3: Display routing table information.
+
+bash
+
+netstat -r
+
+Example 4: Check network interface statistics.
+
+bash
+
+netstat -i
+
+Example 5: Show network connections by a specific process.
+
+bash
+
+    netstat -ap | grep sshd
+
+25. ss (Socket Statistics)
+
+    Example 1: List all open TCP sockets.
+
+    bash
+
+ss -t
+
+Example 2: Show listening ports.
+
+bash
+
+ss -l
+
+Example 3: Display all UDP sockets.
+
+bash
+
+ss -u
+
+Example 4: Show established connections along with process information.
+
+bash
+
+ss -tp
+
+Example 5: Monitor connections to a specific port (e.g., 22 for SSH).
+
+bash
+
+    ss -at | grep ':22'
+
+26. iptables (Firewall Management)
+
+    Example 1: List all firewall rules.
+
+    bash
+
+iptables -L
+
+Example 2: Block an IP address from accessing your server.
+
+bash
+
+iptables -A INPUT -s 192.168.1.100 -j DROP
+
+Example 3: Allow traffic on port 80 (HTTP).
+
+bash
+
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+
+Example 4: Delete a specific firewall rule.
+
+bash
+
+iptables -D INPUT -s 192.168.1.100 -j DROP
+
+Example 5: Save the firewall rules after making changes.
+
+bash
+
+    iptables-save > /etc/iptables/rules.v4
+
+27. sshd (OpenSSH Daemon)
+
+    Example 1: Start the SSH service.
+
+    bash
+
+systemctl start sshd
+
+Example 2: Change SSH port to 2222 and restart the service.
+
+bash
+
+vi /etc/ssh/sshd_config
+# Change Port 22 to 2222
+systemctl restart sshd
+
+Example 3: View the status of the SSH service.
+
+bash
+
+systemctl status sshd
+
+Example 4: Limit SSH access to specific users.
+
+bash
+
+vi /etc/ssh/sshd_config
+# Add "AllowUsers user1 user2"
+systemctl restart sshd
+
+Example 5: Disable root login via SSH.
+
+bash
+
+vi /etc/ssh/sshd_config
+# Set PermitRootLogin to no
+systemctl restart sshd
